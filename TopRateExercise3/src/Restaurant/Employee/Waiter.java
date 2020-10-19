@@ -9,7 +9,7 @@ public class Waiter extends Employee {
     mỗi ca chỉ có 1 phục vụ (employee)
     các ca có thể là employee là khác nhau ( có thể thay đổi setEmployee )
     */
-    private final static LevelProblem LEVEL_PROBLEM_DEFAULT = LevelProblem.DEPORTMENT;
+    private final static LevelProblem LEVEL_PROBLEM_DEFAULT = LevelProblem.LONG_TIME_WAITING;
     private static Waiter waiter;
 
     // thực thi yêu cầu order của khách
