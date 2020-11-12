@@ -1,17 +1,22 @@
-package com.examplespringboot.demo.Service;
+package com.examplespringboot.demo.service;
 
-import com.examplespringboot.demo.Model.Customer;
-import com.examplespringboot.demo.Repository.IRepositoryCustomer;
+import com.examplespringboot.demo.model.Customer;
+import com.examplespringboot.demo.model.ResponseCustomer;
+import com.examplespringboot.demo.repository.IRepositoryCustomer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Service;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Map;
 
 @Service
+@PropertySource(value = "classpath:language/name_en.properties", encoding = "UTF-8")
 public class CustomerService {
+
+    @Value("#{${name}}")
+    private Map<String, String> nameEnglishs;
 
     @Autowired
     private IRepositoryCustomer repositoryCustomer;
@@ -43,11 +48,34 @@ public class CustomerService {
         return arr;
     }
 
+    // lấy về key có value như tham số truyền vào
+    public String getKey(Map<String, String> map, String value) {
+        for (Map.Entry<String, String> entry : map.entrySet()) {
+            // sử dụng hàm so sánh riêng vì trong csdl lư unicode tổ hợp còn trong file name_en lưu kiểu unicode dựng sẵn
+            if ( UnikeyTowType.equal(entry.getValue().toLowerCase(), value.toLowerCase() ) ) {
+                return entry.getKey();
+            }
+        }
+        return null;
+    }
+
+    // lấy về tên cuối cùng ví dụ "hà duy hoàng" lấy về "hoàng"
+    public String getLastName(String fullName) {
+        fullName = fullName.trim();
+        fullName = fullName.replaceAll("\\s+", " ");
+        String[] names = fullName.split(" ");
+        return names[names.length - 1];
+    }
+
     /*lấy tài khoản khách hàng bằng id*/
     public Customer getCustomerById (int id) {
 
         try {
-            return repositoryCustomer.findById(id).get();
+            Customer customerBase = repositoryCustomer.findById(id).get();
+            // lấy tên english từ file name_en.properties
+            String lastName = getLastName(customerBase.getName());
+            String nameEN = getKey(nameEnglishs, lastName);
+            return new ResponseCustomer(customerBase, nameEN);
         } catch (Exception e) {
             return null;
         }

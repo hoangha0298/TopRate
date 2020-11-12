@@ -1,6 +1,6 @@
-package com.examplespringboot.demo.Repository;
+package com.examplespringboot.demo.repository;
 
-import com.examplespringboot.demo.Model.Customer;
+import com.examplespringboot.demo.model.Customer;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

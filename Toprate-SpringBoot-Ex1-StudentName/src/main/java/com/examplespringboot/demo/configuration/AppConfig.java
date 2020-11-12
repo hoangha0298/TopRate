@@ -1,4 +1,4 @@
-package com.examplespringboot.demo.Configuration;
+package com.examplespringboot.demo.configuration;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -20,18 +20,18 @@ import java.util.Map;
 @EnableJpaRepositories(
         entityManagerFactoryRef = "customersEntityManager",
         transactionManagerRef = "customersTransactionManager",
-        basePackages = {"com.examplespringboot.demo.Repository"}
+        basePackages = {Constants.PACKAGE_REPOSITORY}
 )
 // nguồn thuộc tính để tạo environment
 @PropertySource("classpath:application.properties")
 public class AppConfig {
 
+    // bean chứa các thuộc tính trong file applocation.properties
     @Autowired
     private Environment environment;
 
     // config dataSource = kết nối đến csdl
     @Bean("customersDataSource")
-    @Primary
     public DataSource getDataSourceMysql() {
         DataSourceBuilder dataSource = DataSourceBuilder.create();
         dataSource.url(environment.getProperty("spring.datasource.url"));
@@ -42,12 +42,11 @@ public class AppConfig {
 
     @Bean(name = "customersEntityManager")
     public LocalContainerEntityManagerFactoryBean getCustomersEntityManager(
-            EntityManagerFactoryBuilder builder,
-            @Qualifier("customersDataSource") DataSource customersDataSource){
+            EntityManagerFactoryBuilder builder, @Qualifier("customersDataSource") DataSource customersDataSource){
         // config bean entity của data base tương đương với bảng, config jpa
         LocalContainerEntityManagerFactoryBean result = builder
                 .dataSource(customersDataSource)
-                .packages("com.examplespringboot.demo.Model")
+                .packages(Constants.PACKAGE_ENTITIES)
                 .persistenceUnit("customers")
                 .properties(additionalJpaProperties())
                 .build();
@@ -56,10 +55,8 @@ public class AppConfig {
 
     Map<String,?> additionalJpaProperties(){
         Map<String,String> map = new HashMap<>();
-
-        map.put("spring.jpa.hibernate.ddl-auto", environment.getProperty("spring.jpa.hibernate.ddl-auto"));
+        map.put("hibernate.hbm2ddl.auto", environment.getProperty("spring.jpa.hibernate.ddl-auto"));
         map.put("hibernate.show_sql", environment.getProperty("spring.jpa.show-sql"));
-
         return map;
     }
 

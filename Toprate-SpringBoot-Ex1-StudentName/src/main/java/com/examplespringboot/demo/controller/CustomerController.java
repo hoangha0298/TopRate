@@ -1,8 +1,8 @@
-package com.examplespringboot.demo.Controller;
+package com.examplespringboot.demo.controller;
 
-import com.examplespringboot.demo.Model.Customer;
-import com.examplespringboot.demo.Model.ResponseDelete;
-import com.examplespringboot.demo.Service.CustomerService;
+import com.examplespringboot.demo.model.Customer;
+import com.examplespringboot.demo.model.ResponseDelete;
+import com.examplespringboot.demo.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 

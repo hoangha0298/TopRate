@@ -1,4 +1,4 @@
-package com.examplespringboot.demo.Model;
+package com.examplespringboot.demo.model;
 
 /*phản hồi khi xóa khách hàng*/
 public class ResponseDelete {
