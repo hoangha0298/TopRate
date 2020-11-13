@@ -36,4 +36,12 @@ public class ResponseCustomer extends Customer{
     public void setNameEN(String nameEN) {
         this.nameEN = nameEN;
     }
+
+    @Override
+    public String toString() {
+        return "ResponseCustomer{" +
+                "super=" + super.toString() +
+                ", nameEN='" + nameEN + '\'' +
+                '}';
+    }
 }

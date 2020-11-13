@@ -10,6 +10,9 @@ public class Employee {
 		return name;
 	}
 
+	public Employee() {
+	}
+
 	@Loggable
 	public void setName(String nm) {
 		this.name=nm;

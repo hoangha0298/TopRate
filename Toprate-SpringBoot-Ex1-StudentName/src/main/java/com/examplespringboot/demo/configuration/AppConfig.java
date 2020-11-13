@@ -24,6 +24,8 @@ import java.util.Map;
 )
 // nguồn thuộc tính để tạo environment
 @PropertySource("classpath:application.properties")
+@EnableAspectJAutoProxy
+@ComponentScan(basePackages = "com.examplespringboot.demo.aspect")
 public class AppConfig {
 
     // bean chứa các thuộc tính trong file applocation.properties

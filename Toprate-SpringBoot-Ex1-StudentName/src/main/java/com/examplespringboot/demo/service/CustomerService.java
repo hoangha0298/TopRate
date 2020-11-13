@@ -22,6 +22,7 @@ public class CustomerService {
     private IRepositoryCustomer repositoryCustomer;
 
     public void setDefaultData () {
+        System.out.println("====================== default ======================");
         ArrayList<Customer> customers = new ArrayList<>();
         customers.add(new Customer(1, "Hà Duy Hoàng", "haduyhoang@gmail.com", 22));
         customers.add(new Customer(2, "Nguyễn Trung Dũng", "TrungDung@gmail.com", 21));
@@ -29,6 +30,7 @@ public class CustomerService {
         customers.add(new Customer(4, "Đào Duy Hiển", "duyhien@gmail.com", 20));
         customers.add(new Customer(5, "Hoàng Trọng Thắng", "Thanghoang@gmail.com", 22));
         repositoryCustomer.saveAll(customers);
+        System.out.println("====================== default ======================\n");
     }
 
     /*
@@ -75,7 +77,9 @@ public class CustomerService {
             // lấy tên english từ file name_en.properties
             String lastName = getLastName(customerBase.getName());
             String nameEN = getKey(nameEnglishs, lastName);
-            return new ResponseCustomer(customerBase, nameEN);
+            ResponseCustomer responseCustomer = new ResponseCustomer(customerBase, nameEN);
+            System.out.println("===== " + responseCustomer);
+            return responseCustomer;
         } catch (Exception e) {
             return null;
         }

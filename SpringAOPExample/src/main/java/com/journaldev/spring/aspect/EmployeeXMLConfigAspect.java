@@ -1,7 +1,9 @@
 package com.journaldev.spring.aspect;
 
 import org.aspectj.lang.ProceedingJoinPoint;
+import org.springframework.stereotype.Component;
 
+@Component
 public class EmployeeXMLConfigAspect {
 
 	public Object employeeAroundAdvice(ProceedingJoinPoint proceedingJoinPoint){
