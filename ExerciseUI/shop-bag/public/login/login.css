@@ -1,0 +1,150 @@
+
+*{
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans';
+}
+
+a {
+    text-decoration: none;
+}
+
+p, button, input, a {
+    font-size: 20px;
+    line-height: 27px;
+}
+
+button, input {
+    border: none;
+    outline: none;
+}
+
+button {
+    cursor: pointer;
+    color: white;
+    justify-content: center;
+}
+
+input {
+    background: rgba(0, 0, 0, 0);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 1440px;
+    min-width: 1110px;
+    min-height: 945px;
+    display: flex;
+    margin: 0 auto;
+}
+
+.container-left {
+    width: 46.5%;
+    background: #E0EBED;
+    padding: 40px 0px 0px 100px;
+}
+
+.logo{
+    display: flex;
+    align-items: flex-end;
+}
+
+.logo .shop-bag{
+    margin-left: 11px;
+}
+
+.container-left > h1{
+    margin-top: 46px;
+    margin-bottom: 50px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+}
+
+#slide-show{
+    width: 493px;
+    display: block;
+}
+
+.container-right {
+    width: 53.5%;
+    padding: 124px 0px 0px 90px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.container-right h1{
+    margin-bottom: 50px;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 40px;
+    line-height: 54px;
+    display: flex;
+    align-items: center;
+    color: #29293E;
+}
+
+#username, #password, #login {
+    display: flex;
+    align-items: center;
+    width: 450px;
+    height: 66px;
+    background: #F9F9F9;
+    border: 1px solid #798291;
+    border-radius: 10px;
+    margin-bottom: 15px;
+}
+
+#username input, #password input {
+    width: 100%;
+}
+
+#password .unhide {
+    margin-left: 0%;
+    cursor: pointer;
+}
+
+#login {
+    background-color: #000;
+    margin: 15px 0;
+    font-weight: 600;
+}
+
+#username img, #password img{
+    margin: 0 4.2% 0 6.4%;
+}
+
+.container-right a {
+    color: black;
+}
+
+.container-right .associate {
+    margin-top: 50px;
+    display: flex;
+}
+
+#google, #facebook {
+    width: 217px;
+    height: 66px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+}
+
+#google img, #facebook img {
+    margin-right: 15px;
+}
+
+#google {
+    background: #CE3100;
+    margin-right: 16px;
+}
+
+#facebook {
+    background: #395185;
+}
+
+
