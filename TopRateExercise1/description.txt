@@ -1,1 +1,1 @@
-TopRateExercise1/out/production/TopRateExercise1/BitMap có tác dụng đổi mầu áo đỏ thành xanh trong ảnh định dạnh .map
+TopRateExercise1/out/production/TopRateExercise1/BitMap có tác dụng đổi mầu áo đỏ thành xanh trong ảnh định dạnh .map . ví dụ : baitap2.bmp -> output.bmp
